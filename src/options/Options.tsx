@@ -1,5 +1,7 @@
 import React from 'react'
-
+debugger;
+const worker = new Worker('w.js', { type: 'module' });
+console.log("worker: ", worker);
 function Options() {
     return (
         <div>

@@ -16,6 +16,15 @@ function Popup() {
         });
     }
 
+    const test = () => {
+        chrome.runtime.sendMessage({ 
+            message: "test",
+            payload: "ce_input.value"
+        }, response => {
+            console.log("response", response);
+        });
+    };
+
     return (
         <div className='w-72'>
             <div className='p-4'>
@@ -30,6 +39,9 @@ function Popup() {
                     <div className='flex items-center justify-end'>
                         <button onClick={handleSave} className="bg-green-500 hover:bg-green-400 transition duration-300 px-6 py-2 rounded-md text-white text-center">
                             <span>Save</span>
+                        </button>
+                        <button onClick={test} className="bg-green-500 hover:bg-green-400 transition duration-300 px-6 py-2 rounded-md text-white text-center">
+                            <span>Test</span>
                         </button>
                     </div>
                 </div>

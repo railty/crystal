@@ -13,6 +13,8 @@ module.exports = {
         popup: path.resolve("src/popup/index.tsx"),
         options: path.resolve("src/options/index.tsx"),
         contentScript: path.resolve("src/contentScript/index.tsx"),
+        worker: path.resolve("src/static/worker.tsx"),
+        w: path.resolve("src/options/w.js"),
     },
     module: {
         rules: [
@@ -61,7 +63,7 @@ module.exports = {
                 },
             ],
         }),
-        ...getHtmlPlugins(["popup", "options", "contentScript"]),
+        ...getHtmlPlugins(["popup", "options", "contentScript", "worker"]),
     ],
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
@@ -77,6 +79,11 @@ module.exports = {
             },
         },
     },
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    }
 };
 
 function getHtmlPlugins(chunks) {
